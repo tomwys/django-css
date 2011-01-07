@@ -168,7 +168,7 @@ class Compressor(object):
         """
         if not settings.COMPRESS:
             return self.return_compiled_content(self.content)
-        url = "/".join((self.media_url.rstrip('/'), self.new_filepath))
+        url = "/".join((default_storage.base_url.rstrip('/'), self.new_filepath))
         self.save_file()
         context = getattr(self, 'extra_context', {})
         context['url'] = url
