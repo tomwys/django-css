@@ -254,7 +254,7 @@ class CssCompressor(Compressor):
             return self.split_content
         split = self.soup.findAll({'link' : True, 'style' : True})
         for elem in split:
-            if elem.name == 'link' and elem['rel'] == 'stylesheet':
+            if elem.name == 'link' and (elem['rel'] == 'stylesheet' or elem['rel'] == 'stylesheet/less'):
                 filename = self.get_filename(elem['href'])
                 path, ext = os.path.splitext(filename)
                 if ext in settings.COMPILER_FORMATS.keys():
